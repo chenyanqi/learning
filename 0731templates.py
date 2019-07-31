@@ -9,21 +9,17 @@ from tornado.options import define,options
 
 define('port',default=8080,help='run port',type=int)
 
-
-
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         time.sleep(3)
         self.render('0723inout.html')
 
-
-
-
-
+    def post(self, *args, **kwargs):
+        self.write('0731templates.html')
 
 aappclication = tornado.web.Application(
    handlers =  [
-       (r"/(main",IndexHandler)
+       (r"/main",IndexHandler)
     ],
     template_path='templates',
     debug=True
