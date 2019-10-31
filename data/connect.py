@@ -15,6 +15,12 @@ engine = create_engine(Db_uri)
 from sqlalchemy.ext.declarative import  declarative_base
 Base = declarative_base(engine)
 
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(engine)
+session = Session()
+
+
+
 if __name__ == '__main__':
     conection = engine.connect()
     result = conection.execute('select 1')

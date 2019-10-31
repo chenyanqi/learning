@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy import Column,Integer,String,DateTime,Boolean
-from  data.connect import  Base
+
+from  connect import  Base
 
 
 class User(Base):
@@ -11,8 +12,14 @@ class User(Base):
     creatime = Column(DateTime,default=datetime.now)
     _locked = Column(Boolean,default=False,nullable=False)
 
-
-if __name__ == 'main':
+    def __repr__(self):
+        return 'User(id=%s,name=%s,password=%s,creatime=%s,_locked=%s)' %(self.id,
+                                                             self.name,
+                                                             self.password,
+                                                             self.creatime,
+                                                             self._locked
+                                                              )
+if __name__ == '__main__':
     Base.metadata.create_all()
 
 
